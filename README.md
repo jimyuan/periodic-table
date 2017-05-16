@@ -1,22 +1,7 @@
-# vue2-proj
+# Periodic Table 元素周期表
+为纪念元素周期表第七周期元素全部填满，特此纪念。
 
-> 这是一个网站组件化开发的模板，通过以下技术及框架来实现样式和逻辑的组件化开发、代码测试以及生产环境的部署：
-> - Webpack2
-> - ES6
-> - Sass
-> - Vue2
-> - Vue-resource
-> - Vuex
->
-> 安装及运行步骤见下方示例，详细使用见 Gitlab wiki（only internal）。
-
-## Tips
-建议安装使用 _cnpm_ 命令替代 nodejs 默认的包管理工具。
-``` bash
-npm install -g cnpm --registry=https://registry.npm.taobao.org
-```
-
-## Build Setup
+## 源码运行
 
 ``` bash
 # install dependencies
@@ -35,3 +20,6 @@ cnpm run build
 # 生成编译打包分析报告
 cnpm run build --report
 ```
+
+## 在线浏览
+[https://jimyuan.github.io/periodic-table/dist/]()
