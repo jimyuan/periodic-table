@@ -1,0 +1,55 @@
+@charset 'utf-8';
+
+.element {
+  width: $cell;
+  padding-top: $cell;
+  background: $pt-bg;
+  position: relative;
+  border: 1px solid $pt-border;
+  border-bottom-width: 0;
+  border-right-width: 0;
+}
+
+.periodic-table,
+.series {
+  width: 90%;
+  margin: 5%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.periodic-table > .element {
+  &:nth-child(1) {
+    margin-right: 16 * $cell;
+    box-shadow: 1px 0 $pt-border;
+  }
+  &:nth-child(4),
+  &:nth-child(12) {
+    margin-right: 10 * $cell;
+    box-shadow: 1px 0 $pt-border;
+  }
+  &:nth-child(2),
+  &:nth-child(10),
+  &:nth-child(18),
+  &:nth-child(36),
+  &:nth-child(54),
+  &:nth-child(72),
+  &:nth-child(90) {
+    border-right-width: 1px;
+  }
+  &:nth-child(n+73) {
+    border-bottom-width: 1px;
+  }
+}
+
+.series > .element {
+  &:nth-child(15n+1) {
+    margin-left: 1.5 * $cell;
+  }
+  &:nth-child(15n) {
+    border-right-width: 1px;
+  }
+  &:nth-child(n+16) {
+    border-bottom-width: 1px;
+  }
+}

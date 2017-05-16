@@ -1,0 +1,16 @@
+@charset 'utf-8';
+
+.child-view {
+  width: 90%;
+  margin: auto;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
+}
