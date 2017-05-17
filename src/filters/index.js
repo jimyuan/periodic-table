@@ -2,6 +2,6 @@
  * 此处须把所有过滤器全局化
  */
 import Vue from 'vue'
-import dateTimeFormatter from './dateTimeFormatter'
+import massFormatter from './massFormatter'
 
-Vue.filter('dateTimeFormatter', dateTimeFormatter)
+Vue.filter('massFormatter', massFormatter)

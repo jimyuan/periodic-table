@@ -1,16 +1,17 @@
 <template>
   <div>
     <section class="periodic-table">
-      <article class="element" v-for="element in ptData"></article>
+      <cell v-for="element in ptData" :key="element" :data="element"></cell>
     </section>
     <section class="series">
-      <article class="element" v-for="element in laData.concat(acData)"></article>
+      <cell v-for="element in laData.concat(acData)" :key="element" :data="element"></cell>
     </section>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Cell from 'COMPONENTS/Element'
 export default {
   data () {
     return {
@@ -20,20 +21,28 @@ export default {
     }
   },
   computed: mapState({
-    periodicTable: state => state.periodicTable
+    periodicTable: state => state.periodicTable,
+    cnName: state => state.elementCName
   }),
   mounted () {
-    this.ptData = [].concat(this.periodicTable)
+    this.ptData = [].concat(this.periodicTable).map((item, index) => Object.assign(item, {cnName: this.cnName[index]}))
     // 镧系元素
     this.laData = this.ptData.splice(56, 15, {
       atomicNumber: '57-71',
-      name: 'lanthanoids'
+      symbol: 'La-Lu',
+      cnName: '镧-镥',
+      atomicMass: '',
+      cpkHexColor: '70D4FF'
     })
     // 锕系元素
     this.acData = this.ptData.splice(74, 15, {
       atomicNumber: '89-103',
-      name: 'actinoids'
+      symbol: 'Ac-Lr',
+      cnName: '锕-铹',
+      atomicMass: '',
+      cpkHexColor: '70ABFA'
     })
-  }
+  },
+  components: { Cell }
 }
 </script>

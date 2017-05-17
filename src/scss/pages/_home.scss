@@ -1,19 +1,8 @@
 @charset 'utf-8';
 
-.element {
-  width: $cell;
-  padding-top: $cell;
-  background: $pt-bg;
-  position: relative;
-  border: 1px solid $pt-border;
-  border-bottom-width: 0;
-  border-right-width: 0;
-}
-
 .periodic-table,
 .series {
-  width: 90%;
-  margin: 5%;
+  margin: 5% 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -39,6 +28,17 @@
   }
   &:nth-child(n+73) {
     border-bottom-width: 1px;
+  }
+  &:nth-child(57),
+  &:nth-child(75) {
+    font-size: 0.8em;
+    & > div {
+      padding-top: 40%;
+    }
+    & > div::before,
+    & > div::after {
+      font-size: 0.6 / 0.8 * 1em;
+    }
   }
 }
 
