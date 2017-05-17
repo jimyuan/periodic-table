@@ -22,4 +22,4 @@ cnpm run build --report
 ```
 
 ## 在线浏览
-[https://jimyuan.github.io/periodic-table/html/]()
+[https://jimyuan.github.io/periodic-table/docs/](https://jimyuan.github.io/periodic-table/docs/)
