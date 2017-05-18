@@ -11,6 +11,12 @@ const router = new VueRouter({
   }, {
     path: '/home',
     component: resolve => require(['PAGES/Home'], resolve)
+  }, {
+    path: '/element',
+    redirect: '/element/1'
+  }, {
+    path: '/element/:name',
+    component: resolve => require(['PAGES/ElementDetail'], resolve)
   }]
 })
 

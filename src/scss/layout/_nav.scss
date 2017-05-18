@@ -1,0 +1,29 @@
+@charset 'utf-8';
+
+nav {
+  margin: auto;
+  border-bottom: 1px solid #ddd;
+  height: 4em;
+  background: #fff;
+}
+
+.nav-zone {
+  height: 100%;
+  margin: 0 5%;
+  padding-top: 1.4em;
+  text-align: right;
+
+  > span {
+    @include size(2em);
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 0.6em;
+    line-height: 2em;
+    cursor: pointer;
+
+    &.cur-ver {
+      background: aqua;
+    }
+  }
+}

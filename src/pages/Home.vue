@@ -1,9 +1,9 @@
 <template>
   <div>
-    <section class="periodic-table">
+    <section class="periodic-table" @click="goDetail">
       <cell v-for="element in ptData" :key="element" :data="element"></cell>
     </section>
-    <section class="series">
+    <section class="series" @click="goDetail">
       <cell v-for="element in laData.concat(acData)" :key="element" :data="element"></cell>
     </section>
   </div>
@@ -21,11 +21,11 @@ export default {
     }
   },
   computed: mapState({
-    periodicTable: state => state.periodicTable,
-    cnName: state => state.elementCName
+    periodicTable: state => state.elements
   }),
   mounted () {
-    this.ptData = [].concat(this.periodicTable).map((item, index) => Object.assign(item, {cnName: this.cnName[index]}))
+    // 复制元素列表
+    this.ptData = [].concat(this.periodicTable)
     // 镧系元素
     this.laData = this.ptData.splice(56, 15, {
       atomicNumber: '57-71',
@@ -42,6 +42,15 @@ export default {
       atomicMass: '',
       cpkHexColor: '70ABFA'
     })
+  },
+  methods: {
+    goDetail (evt) {
+      const index = evt.path.find(item => item.tagName.toLowerCase() === 'div').dataset.number
+      index && this.$router.push({
+        path: `/element/${this.periodicTable[index - 1].name}`
+      })
+      // console.log(`/element/${this.periodicTable[index].name}`)
+    }
   },
   components: { Cell }
 }
