@@ -27,6 +27,14 @@
       font-size: 0.6em;
     }
 
+    &.radiation::after {
+      content: '';
+      @include absolute(top 5% right 5%);
+      @include size(1em);
+      display: block;
+      background: url(../assets/radiation.svg) no-repeat 0 0 / cover;
+    }
+
     > span:last-child {
       font-size: 0.6em;
 

@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     goDetail (evt) {
-      const index = evt.path.find(item => item.tagName.toLowerCase() === 'div').dataset.number
+      const index = parseInt(evt.path.find(item => item.tagName.toLowerCase() === 'div').dataset.number, 10)
       index && this.$router.push({
         path: `/element/${this.periodicTable[index - 1].name}`
       })

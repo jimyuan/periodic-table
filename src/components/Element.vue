@@ -1,6 +1,6 @@
 <template>
   <article class="element" :style="{backgroundColor: `#${this.cpkColor}`}">
-    <div :data-number="element.atomicNumber">
+    <div :data-number="element.atomicNumber" :class="{radiation: Array.isArray(element.atomicMass) || [90,91,92].indexOf(element.atomicNumber)>-1}">
       <span v-text="element.cnName" v-if="ver === 'cn'"></span>
       <span v-text="element.symbol" v-if="ver === 'en'"></span>
       <span>{{ element.atomicMass | massFormatter }}</span>
