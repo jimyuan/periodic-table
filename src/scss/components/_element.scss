@@ -9,7 +9,9 @@
   border-bottom-width: 0;
   border-right-width: 0;
   font-weight: bold;
+  cursor: pointer;
   background: linear-gradient(rgba(255, 255, 255, 0.6), transparent);
+  background-origin: border-box;
 
   > div {
     @include absolute(top 0 left 0 right 0 bottom 0);

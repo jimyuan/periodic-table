@@ -1,5 +1,5 @@
 <template>
-  <article class="element" :style="{backgroundColor: `#${element.cpkHexColor}`}">
+  <article class="element" :style="{backgroundColor: `#${this.cpkColor}`}">
     <div :data-number="element.atomicNumber">
       <span v-text="element.cnName" v-if="ver === 'cn'"></span>
       <span v-text="element.symbol" v-if="ver === 'en'"></span>
@@ -16,8 +16,13 @@ export default {
       element: this.data
     }
   },
-  computed: mapState({
-    ver: state => state.version
-  })
+  computed: {
+    ...mapState({
+      ver: state => state.version
+    }),
+    cpkColor () {
+      return this.element.cpkHexColor || 'eee'
+    }
+  }
 }
 </script>

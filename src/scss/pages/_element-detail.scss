@@ -20,5 +20,30 @@
 .element-info > ul {
   list-style-type: none;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.8;
+
+  li {
+    padding: 0 1em;
+
+    &:nth-child(even) {
+      background: lighten(#000, 20%);
+    }
+
+    sup {
+      position: relative;
+      top: -1em;
+      font-size: 0.6em;
+    }
+
+    span {
+      display: inline-block;
+      width: 15em;
+    }
+
+    i {
+      font-size: 0.8em;
+      color: lighten(#000, 40%);
+      font-style: normal;
+    }
+  }
 }

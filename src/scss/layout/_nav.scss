@@ -4,17 +4,24 @@ nav {
   margin: auto;
   border-bottom: 1px solid #ddd;
   height: 4em;
-  background: #fff;
+  background: #ddd linear-gradient(#fff, transparent);
 }
 
 .nav-zone {
   height: 100%;
   margin: 0 5%;
-  padding-top: 1.4em;
+  position: relative;
   text-align: right;
+
+  > h1 {
+    @include absolute(top 0 bottom 0);
+    font-size: 2em;
+    line-height: 2em;
+  }
 
   > span {
     @include size(2em);
+    margin-top: (1.4 / 0.6) * 1em;
     display: inline-block;
     text-align: center;
     border: 1px solid #ccc;
