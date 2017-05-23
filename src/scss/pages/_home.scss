@@ -2,11 +2,30 @@
 
 .periodic-table,
 .series {
-  margin: 5% 0;
+  margin: 3% 0;
   display: flex;
   flex-wrap: wrap;
-}
 
+  > .element {
+    transition: all 0.3s;
+
+    > .radiation::after {
+      transition: transform 0.3s linear;
+    }
+
+    &:hover {
+      transform: scale(1.5);
+      z-index: 100;
+      border-color: transparent;
+      box-shadow: 0 0 10px #bbb;
+
+      > .radiation::after {
+        transform: rotate(1turn);
+      }
+    }
+  }
+}
+// 主表样式定义
 .periodic-table > .element {
   &:nth-child(1) {
     margin-right: 16 * $cell;
@@ -41,7 +60,7 @@
     }
   }
 }
-
+// 附表样式定义
 .series > .element {
   &:nth-child(15n+1) {
     margin-left: 1.5 * $cell;
@@ -51,19 +70,5 @@
   }
   &:nth-child(n+16) {
     border-bottom-width: 1px;
-  }
-}
-
-// element hover style
-.periodic-table,
-.series {
-  > .element {
-    transition: all 0.3s;
-    &:hover {
-      transform: scale(1.5);
-      z-index: 100;
-      border-color: transparent;
-      box-shadow: 0 0 10px #ccc;
-    }
   }
 }

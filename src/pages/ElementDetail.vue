@@ -10,11 +10,13 @@
           <!-- 元素名称 -->
           <li><span v-text="switchLang('Element Name|元素名称')">Element Name</span> {{ element.name }}</li>
           <!-- 元素名称缩写 -->
-          <li><span v-text="switchLang('Symbol|元素名称缩写')"></span> {{ element.symbol }}</li>
+          <li><span v-text="switchLang('Symbol|中文名称')"></span> <span v-text="switchLang(`${element.symbol}|${element.cnName}`)"></span></li>
           <!-- 原子量 -->
           <li><span v-text="switchLang('Atomic Mass|原子量')"></span> {{ element.atomicMass }}</li>
           <!-- 电子轨道排布  -->
-          <li><span v-text="switchLang('Electronic Configuration|电子轨道排布')"></span> <span v-html="ecFormat(element.electronicConfiguration)"></span></li>
+          <li><span v-text="switchLang('E-Configuration|电子轨道排布')"></span> <span v-html="ecFormat(element.electronicConfiguration)"></span></li>
+          <!-- 同位素  -->
+          <li v-if="element.isotopes"><span v-text="switchLang('Isotopes|同位素')"></span> {{ element.isotopes }}</li>
           <!-- 电负性 -->
           <li v-if="element.electronegativity"><span v-text="switchLang('Electrone Gativity|电负性')">Electrone Gativity</span> {{ element.electronegativity }}</li>
           <!-- 原子半径 -->
@@ -30,22 +32,26 @@
           <!-- 化合价 -->
           <li v-if="element.oxidationStates"><span v-text="switchLang('Oxidation States|化合价')"></span> {{ element.oxidationStates }}</li>
           <!-- 标准态 -->
-          <li v-if="element.standardState"><span v-text="switchLang('Standard State|标准态')"></span> {{ element.standardState }}</li>
+          <li v-if="element.standardState"><span v-text="switchLang('Standard State|常温下形态')"></span> {{ element.standardState }}</li>
           <!-- 键合型 -->
           <li v-if="element.bondingType"><span v-text="switchLang('Bonding Type|键合型')"></span> {{ element.bondingType }}</li>
           <!-- 熔点 -->
-          <li v-if="element.meltingPoint"><span v-text="switchLang('Melting Point|熔点')"></span> {{ element.meltingPoint }} K</li>
+          <li v-if="element.meltingPoint"><span v-text="switchLang('Melting Point|熔点')"></span> {{ element.meltingPoint }}</li>
           <!-- 沸点 -->
-          <li v-if="element.boilingPoint"><span v-text="switchLang('Boiling Point|沸点')"></span> {{ element.boilingPoint }} K</li>
+          <li v-if="element.boilingPoint"><span v-text="switchLang('Boiling Point|沸点')"></span> {{ element.boilingPoint }}</li>
           <!-- 密度 -->
           <li v-if="element.density"><span v-text="switchLang('Density|密度')"></span> {{ element.density }} g/cm³</li>
           <!-- 所属族群 -->
           <li v-if="element.groupBlock"><span v-text="switchLang('Group Block|所属族群')"></span> {{ element.groupBlock }}</li>
           <!-- 发现年代 -->
-          <li><span v-text="switchLang('Year Discovered|发现年代')"></span> {{ element.yearDiscovered }}</li>
+          <li><span v-text="switchLang('Year Discovered|发现年代')"></span> <span class="small">{{ element.yearDiscovered }}</span></li>
         </ul>
       </div>
     </section>
+    <template v-if="element.discription">
+      <hr>
+      <p class="element-desc">{{ element.discription }}</p>
+    </template>
   </div>
 </template>
 
@@ -88,7 +94,7 @@ export default {
       }).join(' ')
     },
     switchLang (str) {
-      return this.ver === 'en' ? `${str.split('|')[0]}:` : `${str.split('|')[1]}:`
+      return this.ver === 'en' ? str.split('|')[0] : str.split('|')[1]
     }
   }
 }

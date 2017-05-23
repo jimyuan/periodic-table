@@ -21,23 +21,32 @@
   list-style-type: none;
   margin: 0;
   line-height: 1.8;
+  font-family: monospace;
+  width: 100%;
 
   li {
     padding: 0 1em;
+    color: #ccc;
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
       background: lighten(#000, 20%);
     }
 
     sup {
       position: relative;
-      top: -1em;
-      font-size: 0.6em;
+      top: -0.7em;
+      font-size: 0.7em;
     }
 
-    span {
+    span:first-child {
       display: inline-block;
-      width: 15em;
+      font-weight: bold;
+      width: 12em;
+      color: #fff;
+
+      &::after {
+        content: ':';
+      }
     }
 
     i {
@@ -46,4 +55,9 @@
       font-style: normal;
     }
   }
+}
+
+.element-desc {
+  text-align: justify;
+  line-height: 1.5;
 }

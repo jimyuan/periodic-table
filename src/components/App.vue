@@ -2,8 +2,8 @@
   <div id="app">
     <nav>
       <div class="nav-zone">
-        <h1 v-if="ver === 'en'">Periodic Table</h1>
-        <h1 v-if="ver === 'cn'"> 元素周期表</h1>
+        <h1 v-if="ver === 'en'" @click="goHome">Periodic Table</h1>
+        <h1 v-if="ver === 'cn'" @click="goHome"> 元素周期表</h1>
         <span :class="{'cur-ver': ver === 'cn'}" @click="changeVersion('cn')">中</span>
         <span :class="{'cur-ver': ver === 'en'}" @click="changeVersion('en')"> EN</span>
       </div>
@@ -23,6 +23,9 @@ export default {
   methods: {
     changeVersion (ver) {
       this.ver !== ver && this.$store.commit('setVer', ver)
+    },
+    goHome () {
+      this.$router.push({ path: '/home' })
     }
   }
 }

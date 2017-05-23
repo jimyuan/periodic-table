@@ -1,5 +1,8 @@
 @charset 'utf-8';
 
+$l-cell: 1em;
+$s-cell: $l-cell / 5;
+
 nav {
   margin: auto;
   border-bottom: 1px solid #ddd;
@@ -15,8 +18,39 @@ nav {
 
   > h1 {
     @include absolute(top 0 bottom 0);
-    font-size: 2em;
-    line-height: 2em;
+    font-size: $l-cell * 2;
+    line-height: $l-cell * 2;
+    padding-left: $l-cell * 1.5;
+    color: hsl(240, 100%, 70%);
+    cursor: pointer;
+    transition: text-shadow 0.3s;
+
+    &:hover {
+      text-shadow: 0.1em 0.1em 0.1em #bbb;
+    }
+
+    &::before {
+      @include size($l-cell);
+      @include absolute(top $l-cell / 2 left 0);
+
+      content: '';
+      display: block;
+      background: radial-gradient(currentColor 30%, transparent 30%);
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    &::after {
+      @include size($s-cell);
+      @include absolute(top ($l-cell - $s-cell) / 2 left ($l-cell - $s-cell) / 2);
+
+      content: '';
+      display: block;
+      background: blue;
+      border-radius: 50%;
+      transform-origin: $s-cell / 2 ($l-cell / 2 + $s-cell / 2);
+      animation: round 5s linear infinite;
+    }
   }
 
   > span {
@@ -32,5 +66,11 @@ nav {
     &.cur-ver {
       background: aqua;
     }
+  }
+}
+
+@keyframes round {
+  to {
+    transform: rotate(1turn)
   }
 }

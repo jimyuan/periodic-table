@@ -1,5 +1,5 @@
 @charset 'utf-8';
-
+// 元素容器定义
 .element {
   width: $cell;
   padding-top: $cell;
@@ -12,29 +12,32 @@
   cursor: pointer;
   background: linear-gradient(rgba(255, 255, 255, 0.6), transparent);
   background-origin: border-box;
-
+  // 主容器定义
   > div {
     @include absolute(top 0 left 0 right 0 bottom 0);
 
     text-align: center;
     padding-top: 30%;
     line-height: 1;
-
+    // 原子序号
     &::before {
-      content: attr(data-number);
       @include absolute(top 0 left 0);
+
+      content: attr(data-number);
       padding: 5% 0 0 5%;
       font-size: 0.6em;
     }
-
+    // 放射性元素 logo
     &.radiation::after {
-      content: '';
       @include absolute(top 5% right 5%);
-      @include size(1em);
-      display: block;
-      background: url(../assets/radiation.svg) no-repeat 0 0 / cover;
-    }
+      @include size(0.8em);
 
+      content: '';
+      border-radius: 50%;
+      display: block;
+      background: #222 url(../assets/radiation.svg) no-repeat 0 0 / cover;
+    }
+    // 原子量
     > span:last-child {
       font-size: 0.6em;
 
