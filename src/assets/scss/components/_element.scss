@@ -10,8 +10,9 @@
   border-right-width: 0;
   font-weight: bold;
   cursor: pointer;
-  background: linear-gradient(rgba(255, 255, 255, 0.6), transparent);
+  background: linear-gradient(rgba(255, 255, 255, 0.5), transparent);
   background-origin: border-box;
+  font-family: sans-serif;
   // 主容器定义
   > div {
     @include absolute(top 0 left 0 right 0 bottom 0);
@@ -35,7 +36,7 @@
       content: '';
       border-radius: 50%;
       display: block;
-      background: #222 url(../assets/radiation.svg) no-repeat 0 0 / cover;
+      background: #222 url('../assets/radiation.svg') no-repeat 0 0 / cover;
     }
     // 原子量
     > span:last-child {

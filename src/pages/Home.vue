@@ -1,16 +1,15 @@
 <template>
   <div>
-    <section class="periodic-table" @click="goDetail">
-      <cell v-for="element in ptData" :key="element" :data="element"></cell>
+    <section class="periodic-table">
+      <cell v-for="element in ptData" :key="element.symbol" :data="element"></cell>
     </section>
-    <section class="series" @click="goDetail">
-      <cell v-for="element in laData.concat(acData)" :key="element" :data="element"></cell>
+    <section class="series">
+      <cell v-for="element in laData.concat(acData)" :key="element.symbol" :data="element"></cell>
     </section>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import Cell from 'COMPONENTS/Element'
 export default {
   data () {
@@ -20,12 +19,14 @@ export default {
       acData: []
     }
   },
-  computed: mapState({
-    periodicTable: state => state.elements
-  }),
+  computed: {
+    periodicTable () {
+      return this.$store.state.elements
+    }
+  },
   mounted () {
     // 复制元素列表
-    this.ptData = [].concat(this.periodicTable)
+    this.ptData = [...this.periodicTable]
     // 镧系元素
     this.laData = this.ptData.splice(56, 15, {
       atomicNumber: '57-71',
@@ -42,15 +43,6 @@ export default {
       atomicMass: '',
       cpkHexColor: '70ABFA'
     })
-  },
-  methods: {
-    goDetail (evt) {
-      const index = parseInt(evt.path.find(item => item.tagName.toLowerCase() === 'div').dataset.number, 10)
-      index && this.$router.push({
-        path: `/element/${this.periodicTable[index - 1].name}`
-      })
-      // console.log(`/element/${this.periodicTable[index].name}`)
-    }
   },
   components: { Cell }
 }

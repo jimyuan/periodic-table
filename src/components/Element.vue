@@ -1,5 +1,5 @@
 <template>
-  <article class="element" :style="{backgroundColor: `#${this.cpkColor}`}">
+  <article class="element" :style="{backgroundColor: `#${this.cpkColor}`}" @click="goDetail(element.atomicNumber)">
     <div :data-number="element.atomicNumber" :class="{radiation: Array.isArray(element.atomicMass) || [90,91,92].indexOf(element.atomicNumber)>-1}">
       <span v-text="element.cnName" v-if="ver === 'cn'"></span>
       <span v-text="element.symbol" v-if="ver === 'en'"></span>
@@ -8,7 +8,6 @@
   </article>
 </template>
 <script>
-import { mapState } from 'vuex'
 export default {
   props: ['data'],
   data () {
@@ -17,11 +16,18 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      ver: state => state.version
-    }),
+    ver () {
+      return this.$store.state.version
+    },
     cpkColor () {
       return this.element.cpkHexColor || 'eee'
+    }
+  },
+  methods: {
+    goDetail (num) {
+      this.$router.push({
+        path: `/element/${this.element.name}`
+      })
     }
   }
 }

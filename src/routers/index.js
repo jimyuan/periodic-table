@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
+const Home = () => import('PAGES/Home')
+const ElementDetail = () => import('PAGES/ElementDetail')
 const router = new VueRouter({
   // mode: 'history',
   routes: [{
@@ -10,13 +11,13 @@ const router = new VueRouter({
     redirect: '/home'
   }, {
     path: '/home',
-    component: resolve => require(['PAGES/Home'], resolve)
+    component: Home
   }, {
     path: '/element',
     redirect: '/element/1'
   }, {
     path: '/element/:name',
-    component: resolve => require(['PAGES/ElementDetail'], resolve)
+    component: ElementDetail
   }]
 })
 
