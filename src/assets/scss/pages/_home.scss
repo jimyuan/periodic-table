@@ -7,9 +7,11 @@
   flex-wrap: wrap;
 
   > .element {
-    transition: all 0.3s;
+    will-change: transform, border-color;
+    transition: transform 0.3s, border-color 0.3s;
 
     > .radiation::after {
+      will-change: transform;
       transition: transform 0.3s linear;
     }
 
